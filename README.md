@@ -1,0 +1,2 @@
+# shop-api
+express, mongo
