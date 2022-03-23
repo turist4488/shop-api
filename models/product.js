@@ -10,6 +10,14 @@ const productsSchema = new Schema(
       required: true,
     },
     image: String,
+    media: [
+      {
+        type: String,
+      },
+    ],
+    description: {
+      type: Object,
+    },
     categoryId: {
       type: Schema.Types.ObjectId,
       ref: "Category",
