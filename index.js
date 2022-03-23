@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const productsRouter = require("./routers/products");
 const languagesRouter = require("./routers/languages");
+const categoriesRouter = require("./routers/categories");
 const { Language } = require("./models/language");
 
 const app = express();
@@ -49,6 +50,7 @@ seedLanguages();
 
 app.use(`${api}/products`, productsRouter);
 app.use(`${api}/languages`, languagesRouter);
+app.use(`${api}/categories`, categoriesRouter);
 
 app.listen(5000, () => {
   console.log(api);

@@ -12,6 +12,16 @@ router.get("/", async (req, res) => {
   res.send(languages);
 });
 
+router.get("/active", async (req, res) => {
+  const languages = await Language.find({ isActive: true });
+  if (!languages) {
+    res.status(500).json({
+      success: false,
+    });
+  }
+  res.send(languages);
+});
+
 router.get("/:id", async (req, res) => {
   const id = req.params.id;
   const language = await Language.findById(id);
@@ -21,16 +31,6 @@ router.get("/:id", async (req, res) => {
     });
   }
   res.send(language);
-});
-
-router.get("/active", async (req, res) => {
-  const languages = await Language.find({ isActive: true });
-  if (!languages) {
-    res.status(500).json({
-      success: false,
-    });
-  }
-  res.send(languages);
 });
 
 router.post("/", (req, res) => {
